@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>core.mask Module &mdash; scikit-beam 0.0.8.post155+gdd8625b documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '0.0.8.post155+gdd8625b',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="scikit-beam 0.0.8.post155+gdd8625b documentation" href="../../../index.html" />
+    <link rel="up" title="Complete Reference (API)" href="../index.html" />
+    <link rel="next" title="diffraction Module" href="../diffraction.html" />
+    <link rel="prev" title="core subpackge" href="../core.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-skbeam.core.mask">
+<span id="core-mask-module"></span><h1><code class="xref py py-mod docutils literal"><span class="pre">core.mask</span></code> Module<a class="headerlink" href="#module-skbeam.core.mask" title="Permalink to this headline">¶</a></h1>
+<p>This module is for functions specific to mask or threshold an image
+basically to clean images</p>
+<dl class="function">
+<dt id="skbeam.core.mask.bad_to_nan_gen">
+<code class="descclassname">skbeam.core.mask.</code><code class="descname">bad_to_nan_gen</code><span class="sig-paren">(</span><em>images</em>, <em>bad</em><span class="sig-paren">)</span><a class="headerlink" href="#skbeam.core.mask.bad_to_nan_gen" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert the images marked as &#8220;bad&#8221; in <cite>bad</cite> by their index in
+images into a np.nan array</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>images</strong> : iterable</p>
+<blockquote>
+<div><p>Iterable of 2-D arrays</p>
+</div></blockquote>
+<p><strong>bad</strong> : list</p>
+<blockquote>
+<div><p>List of integer indices into the <cite>images</cite> parameter that mark those
+images as &#8220;bad&#8221;.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Yields:</th><td class="field-body"><p class="first"><strong>img</strong> : array</p>
+<blockquote class="last">
+<div><p>if image is bad it will convert to np.nan array otherwise no
+change to the array</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="skbeam.core.mask.threshold_mask">
+<code class="descclassname">skbeam.core.mask.</code><code class="descname">threshold_mask</code><span class="sig-paren">(</span><em>images</em>, <em>threshold</em>, <em>mask=None</em><span class="sig-paren">)</span><a class="headerlink" href="#skbeam.core.mask.threshold_mask" title="Permalink to this definition">¶</a></dt>
+<dd><p>This generator sets all pixels whose value is greater than <cite>threshold</cite>
+to 0 and yields the thresholded images out</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>images</strong> : iterable</p>
+<blockquote>
+<div><p>Iterable of 2-D arrays</p>
+</div></blockquote>
+<p><strong>threshold</strong> : float</p>
+<blockquote>
+<div><p>threshold value to remove the hot spots in the image</p>
+</div></blockquote>
+<p><strong>mask</strong> : array</p>
+<blockquote>
+<div><p>array with values above the threshold marked as 0 and values
+below marked as 1.
+shape is (num_columns, num_rows) of the image, optional None</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Yields:</th><td class="field-body"><p class="first"><strong>mask</strong> : array</p>
+<blockquote class="last">
+<div><p>array with values above the threshold marked as 0 and values
+below marked as 1.
+shape is (num_columns, num_rows) of the image</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Complete Reference (API)</a><ul>
+      <li>Previous: <a href="../core.html" title="previous chapter"><code class="docutils literal"><span class="pre">core</span></code> subpackge</a></li>
+      <li>Next: <a href="../diffraction.html" title="next chapter"><code class="docutils literal"><span class="pre">diffraction</span></code> Module</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/resource/api/core/mask.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2014-2015 Brookhaven National Lab.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      
+      |
+      <a href="../../../_sources/resource/api/core/mask.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
